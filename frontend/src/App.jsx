@@ -1,10 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import routing from "./routing"
+
 function App() {
   return (
-    <>
-      <div>
-        <h1>Hello World</h1>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        {routing.map((route) => {
+          const Component = route.element
+          return (
+            <Route key={route.path} path={route.path} element={<Component />} />
+          )
+        })}
+      </Routes>
+    </BrowserRouter>
   )
 }
 
